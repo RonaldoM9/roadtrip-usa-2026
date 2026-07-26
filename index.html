@@ -546,11 +546,16 @@
   <button onclick="checkAll()">✅ Tout marquer fait</button>
   <button onclick="uncheckAll()" class="danger">⬜ Tout remettre à zéro</button>
   <button onclick="resetAll()" style="border-color:var(--red);color:var(--red)">🔄 Réinitialiser</button>
+  <a href="map.html" class="ctrl-btn map-btn" style="text-decoration:none">🗺️ Carte</a>
   <span class="controls-toggle">
     <button id="view-family" onclick="setView('family')" class="ctrl-btn">👨‍👩‍👧‍👧</button>
     <button id="view-ronald" onclick="setView('ronald')" class="ctrl-btn active">🎓</button>
   </span>
 </div>
+
+<style>
+.controls .map-btn { display:inline-flex; align-items:center; gap:4px; background:var(--card2); border:1px solid var(--border-light); border-radius:8px; padding:6px 14px; font-size:.78rem; font-weight:600; color:var(--text); cursor:pointer; transition:all .2s; }
+.controls .map-btn:hover { border-color:var(--accent); color:var(--accent); }
 
 <div class="legend" style="margin-top:12px">
   <span class="legend-item"><span class="legend-dot" style="background:var(--accent)"></span> Jour standard</span>

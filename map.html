@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Carte — Road Trip USA 2026</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; }
+#map { height: 100vh; width: 100%; }
+.leaflet-popup-content { font-size: 14px; line-height: 1.5; min-width: 220px; color: #333; }
+.leaflet-popup-content b { color: #c0392b; }
+.legend { position: absolute; bottom: 30px; left: 10px; z-index: 1000; background: rgba(255,255,255,0.95); padding: 10px 14px; border-radius: 12px; font-size: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); border: 1px solid #e0e0e0; }
+.legend-item { display: flex; align-items: center; margin: 4px 0; color: #555; }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.15); }
+.legend-line { width: 20px; height: 3px; margin-right: 8px; flex-shrink: 0; border-radius: 2px; }
+.title-bar { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(255,255,255,0.95); padding: 8px 20px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.12); border: 1px solid #e0e0e0; text-align: center; pointer-events: none; white-space: nowrap; }
+.title-bar h1 { font-size: 17px; color: #2c3e50; }
+.title-bar p { font-size: 11px; color: #888; }
+.back-btn { position: absolute; top: 12px; right: 12px; z-index: 1000; background: rgba(255,255,255,0.95); border: 1px solid #e0e0e0; border-radius: 12px; padding: 8px 16px; font-size: 14px; color: #2c3e50; text-decoration: none; font-weight: 600; box-shadow: 0 2px 12px rgba(0,0,0,0.12); transition: all .2s; }
+.back-btn:hover { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+.city-label { font-size: 13px; font-weight: 600; color: #2c3e50; text-shadow: 0 0 4px #fff, 0 0 4px #fff; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.08); white-space: nowrap; }
+.state-label { font-size: 10px; color: #7f8c8d; text-shadow: 0 0 3px #fff; background: rgba(255,255,255,0.5); padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-btn">← Retour itinéraire</a>
+
+<div class="title-bar">
+  <h1>🚗 Road Trip Ouest Américain 2026</h1>
+  <p>31 juillet → 24 août • ~4 500 km • 14 voyageurs</p>
+</div>
+
+<div id="map"></div>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot" style="background:#e74c3c"></span> Étapes principales</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#27ae60"></span> Workout recommandé</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#f39c12"></span> Points d'intérêt</div>
+  <div class="legend-item"><span class="legend-line" style="background:#2980b9"></span> Itinéraire ~4 500 km</div>
+</div>
+
+<script>
+const map = L.map('map', {
+  zoomControl: true,
+  attributionControl: false
+}).setView([36.5, -114.5], 6);
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  maxZoom: 19,
+}).addTo(map);
+
+// ── ICONS ──
+const redIcon = L.divIcon({
+  className: '',
+  html: '<div style="background:#e74c3c;width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3)"></div>',
+  iconSize: [18,18], iconAnchor: [9,9], popupAnchor: [0,-14]
+});
+const greenIcon = L.divIcon({
+  className: '',
+  html: '<div style="background:#27ae60;width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px">💪</div>',
+  iconSize: [18,18], iconAnchor: [9,9], popupAnchor: [0,-14]
+});
+const ylwIcon = L.divIcon({
+  className: '',
+  html: '<div style="background:#f39c12;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3)"></div>',
+  iconSize: [14,14], iconAnchor: [7,7], popupAnchor: [0,-12]
+});
+
+// ── CITY LABELS ──
+const cityLabels = [
+  { pos: [33.45, -112.07], label: 'Phoenix', state: 'AZ' },
+  { pos: [36.07, -112.12], label: 'Grand Canyon', state: 'AZ' },
+  { pos: [37.00, -110.10], label: 'Monument Valley', state: 'AZ/UT' },
+  { pos: [36.91, -111.46], label: 'Page / Lake Powell', state: 'AZ' },
+  { pos: [37.57, -112.19], label: 'Bryce Canyon', state: 'UT' },
+  { pos: [37.32, -113.00], label: 'Zion', state: 'UT' },
+  { pos: [36.50, -114.53], label: 'Valley of Fire', state: 'NV' },
+  { pos: [36.17, -115.15], label: 'Las Vegas', state: 'NV', anchor: [0,20] },
+  { pos: [36.47, -117.09], label: 'Death Valley', state: 'CA' },
+  { pos: [35.37, -119.02], label: 'Bakersfield', state: 'CA' },
+  { pos: [37.84, -119.52], label: 'Yosemite', state: 'CA' },
+  { pos: [37.78, -122.41], label: 'San Francisco', state: 'CA', anchor: [0,20] },
+  { pos: [36.14, -121.56], label: 'Big Sur', state: 'CA' },
+  { pos: [35.62, -121.14], label: 'San Simeon', state: 'CA' },
+  { pos: [34.05, -118.24], label: 'Los Angeles', state: 'CA', anchor: [0,20] },
+  { pos: [34.02, -118.49], label: 'Santa Monica', state: 'CA' },
+  { pos: [34.14, -118.35], label: 'Universal Studios', state: 'CA' },
+  { pos: [32.85, -117.27], label: 'San Diego', state: 'CA' },
+];
+cityLabels.forEach(c => {
+  L.marker(c.pos, {
+    icon: L.divIcon({
+      className: '',
+      html: `<div class="city-label">${c.label}</div><div class="state-label">${c.state}</div>`,
+      iconSize: [0,0], iconAnchor: c.anchor || [0,0],
+    }), interactive: false
+  }).addTo(map);
+});
+
+// ── ROUTE ──
+const routeCoords = [
+  [33.4484, -112.0741], [36.0658, -112.1180], [36.9968, -110.1029],
+  [36.9148, -111.4573], [36.8805, -111.5161], [37.5708, -112.1856],
+  [37.3222, -113.0048], [36.4989, -114.5341], [36.1477, -115.1561],
+  [36.4702, -117.0884], [35.3739, -119.0195], [37.4534, -119.6442],
+  [37.8393, -119.5165], [37.8376, -120.2494], [37.7831, -122.4067],
+  [37.8267, -122.4228], [36.1437, -121.5646], [35.6175, -121.1405],
+  [34.0537, -118.2428], [34.1013, -118.3267], [33.9910, -118.4746],
+  [34.0195, -118.4912], [34.1392, -118.3544], [34.2156, -119.0646],
+  [32.8505, -117.2730], [34.0537, -118.2428], [33.9454, -118.4085]
+];
+L.polyline(routeCoords, { color: '#2980b9', weight: 4, opacity: 0.8, dashArray: '10, 14' }).addTo(map);
+
+// ── DAY MARKERS ──
+const days = [
+  { pos: [33.4484, -112.0741], n: '1', title: 'Jour 1 — 31/07 · Ven', desc: '<b>Arrivée Phoenix ✈️</b><br>✈️ UA986 CDG→ORD + UA2053 ORD→PHX<br>🏨 La Quinta Inn Sky Harbor<br>🍔 In-N-Out + 🛒 Walmart' },
+  { pos: [36.0658, -112.1180], n: '2', title: 'Jour 2 — 01/08 · Sam', desc: '<b>Phoenix → Grand Canyon</b><br>🚗 365 km · 3h30-4h<br>🏨 Grand Canyon Hotel & Suites<br>💪 Cardio rapide avant départ' },
+  { pos: [36.0581, -112.1129], n: '3', title: 'Jour 3 — 02/08 · Dim', desc: '<b>Grand Canyon journée complète</b><br>🥾 South Rim Trail<br>🌅 Mather Point & Hopi Point<br>🏨 Grand Canyon Hotel & Suites' },
+  { pos: [36.9148, -111.4573], n: '4', title: 'Jour 4 — 03/08 · Lun', desc: '<b>GC → Monument Valley → Lake Powell</b><br>🚗 490 km · 5h<br>📸 Forrest Gump Point<br>🏨 Lake Powell Resort' },
+  { pos: [36.8805, -111.5161], n: '5', title: 'Jour 5 — 04/08 · Mar', desc: '<b>Antelope Canyon + Lake Powell</b><br>📸 Lower Antelope Canyon 11h30<br>🏞️ Horseshoe Bend<br>🏨 Lake Powell Resort' },
+  { pos: [37.5708, -112.1856], n: '6', title: 'Jour 6 — 05/08 · Mer', desc: '<b>Lake Powell → Bryce Canyon</b><br>🚗 250 km · 3h<br>🏨 Rodeway Inn Panguitch<br>💪 Rando Navajo Loop' },
+  { pos: [37.3222, -113.0048], n: '7', title: 'Jour 7 — 06/08 · Jeu', desc: '<b>Bryce → Zion → Hurricane</b><br>🚗 150 km · 2h30<br>🏨 Rodeway Inn Hurricane<br>💪 Riverside Walk' },
+  { pos: [36.1477, -115.1561], n: '8', title: 'Jour 8 — 07/08 · Ven', desc: '<b>Valley of Fire → Las Vegas</b><br>🔥 Valley of Fire + Arrivée Vegas<br>🏨 The STRAT Hotel<br>🌊 Bellagio Fountains' },
+  { pos: [36.1674, -115.1484], n: '9', title: 'Jour 9 — 08/08 · Sam', desc: '<b>💍 RENOUVELLEMENT VŒUX</b><br>Christine & Ronald — 10 ans 💒<br>📍 Sunset Park 19h00<br>📸 Welcome Sign + Bellagio' },
+  { pos: [36.4702, -117.0884], n: '10', title: 'Jour 10 — 09/08 · Dim', desc: '<b>Vegas → Death Valley → Bakersfield</b><br>🚗 560 km · 6h30<br>⚠️ 45°C+ en août<br>🏨 Super 8 Bakersfield' },
+  { pos: [35.3739, -119.0195], n: '11', title: 'Jour 11 — 10/08 · Lun', desc: '<b>Bakersfield → Yosemite</b><br>🚂 Sugar Pine Railroad 13h<br>🏔️ Tunnel View<br>🏨 3 Wild Turkeys Groveland' },
+  { pos: [37.8393, -119.5165], n: '12', title: 'Jour 12 — 11/08 · Mar', desc: '<b>Yosemite journée complète</b><br>💪 Mist Trail → Vernal Falls<br>🌲 Tunnel View<br>🏨 3 Wild Turkeys Groveland' },
+  { pos: [37.7831, -122.4067], n: '13', title: 'Jour 13 — 12/08 · Mer', desc: '<b>Groveland → San Francisco</b><br>🚗 250 km · 3h30<br>🏛️ Alcatraz 14h45<br>🏨 The Pickwick Hotel' },
+  { pos: [37.7879, -122.4075], n: '14', title: 'Jour 14 — 13/08 · Jeu', desc: '<b>San Francisco — Golden Gate</b><br>💪 Course Crissy Field → GG Bridge<br>🚋 Cable Car · Chinatown<br>🏨 The Pickwick Hotel' },
+  { pos: [37.7749, -122.4194], n: '15', title: 'Jour 15 — 14/08 · Ven', desc: '<b>San Francisco — Journée libre</b><br>🌉 Golden Gate Park<br>🧬 Academy of Sciences<br>🏨 The Pickwick Hotel' },
+  { pos: [36.1437, -121.5646], n: '16', title: 'Jour 16 — 15/08 · Sam', desc: '<b>SF → Big Sur → San Simeon</b><br>🌊 Hwy 1 · Bixby Bridge<br>🦭 Elephant Seals<br>🏨 Quality Inn San Simeon' },
+  { pos: [34.0537, -118.2428], n: '17', title: 'Jour 17 — 16/08 · Dim', desc: '<b>San Simeon → Los Angeles</b><br>🚗 360 km · 4h30<br>🏨 Hollywood Homes (Barton Ave)<br>🧺 Courses + lessive' },
+  { pos: [34.0696, -118.4453], n: '18', title: 'Jour 18 — 17/08 · Lun', desc: '<b>🎓 UCLA EMBA — Jour 1 : IP & AI</b><br>Cours 8h30-17h30<br>👨‍👩‍👧‍👧 Famille: Hollywood, Griffith' },
+  { pos: [34.0696, -118.4453], n: '19', title: 'Jour 19 — 18/08 · Mar', desc: '<b>🎓 UCLA EMBA — Jour 2 : Innovation</b><br>🎬 Site Visit Warner Bros<br>👨‍👩‍👧‍👧 Famille: Santa Monica, Venice' },
+  { pos: [34.0696, -118.4453], n: '20', title: 'Jours 20-21 — 19-20/08', desc: '<b>🎓 UCLA EMBA — Jours 3 & 4</b><br>📜 Regulation + Abbott MedTech<br>👨‍👩‍👧‍👧 Famille: Universal Studios 🎢' },
+  { pos: [34.0696, -118.4453], n: '22', title: 'Jour 22 — 21/08 · Ven', desc: '<b>🎓 UCLA — Dernier jour !</b><br>🎓 Certificat UCLA<br>👨‍👩‍👧‍👧 Famille: Camarillo Outlets 🛍️' },
+  { pos: [32.8505, -117.2730], n: '23', title: 'Jour 23 — 22/08 · Sam', desc: '<b>Los Angeles → San Diego</b><br>🚗 380 km AR<br>🏖️ Balade Embarcadero + Coronado' },
+  { pos: [34.0537, -118.2428], n: '24', title: 'Jour 24 — 23/08 · Dim', desc: '<b>Downtown LA 🏛️</b><br>The Broad · Grand Central Market<br>Angels Flight<br>🧳 Préparation bagages' },
+  { pos: [33.9454, -118.4085], n: '25', title: 'Jour 25 — 24/08 · Lun', desc: '<b>LAX → France ✈️</b><br>UA1981 LAX→EWR 11h30<br>UA54 EWR→CDG 21h35<br>🏁 Arrivée Paris 25/08 10h55' }
+];
+days.forEach(d => {
+  L.marker(d.pos, { icon: redIcon }).bindPopup(`<b>${d.title}</b><br>${d.desc}`).addTo(map);
+});
+
+// ── WORKOUTS ──
+const workouts = [
+  { pos: [36.0581, -112.1129], title: '🥾 Grand Canyon — Rim Trail', desc: '<b>Jour 3 — 02/08</b><br>Rando South Rim Trail au lever du soleil' },
+  { pos: [37.5708, -112.1856], title: '🥾 Bryce — Navajo Loop', desc: '<b>Jour 6 — 05/08</b><br>Rando dans les hoodoos' },
+  { pos: [37.3222, -113.0048], title: '🥾 Zion — Riverside Walk', desc: '<b>Jour 7 — 06/08</b><br>Riverside Walk' },
+  { pos: [36.1674, -115.1484], title: '🏋️ STRAT Gym — Vegas', desc: '<b>Jour 9 — 08/08</b><br>Matinée avant cérémonie' },
+  { pos: [37.8393, -119.5165], title: '🥾 Yosemite — Mist Trail', desc: '<b>Jour 12 — 11/08</b><br>Mist Trail → Vernal Falls' },
+  { pos: [37.7879, -122.4075], title: '🏃 Golden Gate Run', desc: '<b>Jour 14 — 13/08</b><br>Crissy Field → GG Bridge ~10 km' },
+  { pos: [33.9910, -118.4746], title: '💪 Gold\'s Gym Venice', desc: '<b>Jour 19 — 18/08</b><br>⭐ La Mecque du muscle !' }
+];
+workouts.forEach(w => {
+  L.marker(w.pos, { icon: greenIcon }).bindPopup(`<b>${w.title}</b><br>${w.desc}`).addTo(map);
+});
+
+// ── POINTS OF INTEREST ──
+const pois = [
+  { pos: [36.8805, -111.5161], title: '🏞️ Horseshoe Bend', desc: 'Méandre du Colorado — Page, AZ' },
+  { pos: [37.1205, -109.9244], title: '🎬 Forrest Gump Point', desc: 'US-163 — Scène mythique' },
+  { pos: [36.1126, -115.1743], title: '🏛️ Bellagio Fountains', desc: 'Fontaines dansantes — Strip' },
+  { pos: [37.715, -119.625], title: '🌉 Tunnel View', desc: 'Vue iconique — Yosemite' },
+  { pos: [36.3719, -121.9772], title: '🌉 Bixby Bridge', desc: 'Pont iconique — Big Sur' },
+  { pos: [32.8505, -117.2730], title: '🏖️ La Jolla Cove', desc: 'Plage — San Diego' },
+  { pos: [37.8267, -122.4228], title: '🏛️ Alcatraz Island', desc: 'Réservé 12/08 14h45' },
+  { pos: [37.4534, -119.6442], title: '🚂 Sugar Pine RR', desc: 'Train historique 10/08 13h' }
+];
+pois.forEach(p => {
+  L.marker(p.pos, { icon: ylwIcon }).bindPopup(`<b>${p.title}</b><br>${p.desc}`).addTo(map);
+});
+
+map.fitBounds(routeCoords, { padding: [40, 40], maxZoom: 7 });
+</script>
+</body>
+</html>
