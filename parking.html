@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parking — Road Trip USA 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+  :root {
+    --bg: #f0e6d3;
+    --card: #faf6ee;
+    --card2: #f5edd9;
+    --border: #d4c4a8;
+    --border-light: #e0d4be;
+    --text: #2c1810;
+    --muted: #8b7355;
+    --accent: #8b1a1a;
+    --navy: #1a237e;
+    --gold: #b8860b;
+    --green: #3d7a3d;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-title: 'Anton', Impact, sans-serif;
+    --font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 60px;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(139,26,26,.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 50%, rgba(26,35,126,.03) 0%, transparent 50%);
+  }
+  .back-btn {
+    position: fixed; top: 14px; right: 14px; z-index: 1000;
+    background: var(--card); border: 2px solid var(--border);
+    border-radius: 0; padding: 8px 16px; font-size: .8rem;
+    font-weight: 700; color: var(--text); text-decoration: none;
+    box-shadow: 3px 3px 0 rgba(44,24,16,.12);
+    font-family: var(--font-title); letter-spacing: 1px; text-transform: uppercase;
+    transition: all .2s;
+  }
+  .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .hero {
+    padding: 44px 20px 28px;
+    background: linear-gradient(180deg, #1a1a3a 0%, #2c1810 100%);
+    text-align: center;
+    border-bottom: 4px solid var(--gold);
+  }
+  .hero .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(184,134,11,.15); border: 2px solid var(--gold);
+    color: var(--gold); padding: 4px 16px; border-radius: 2px;
+    font-family: var(--font-title); font-size: .8rem; letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; color: #fff; font-family: var(--font-title); text-transform: uppercase; letter-spacing: 1px; }
+  .hero .sub { color: #b8a88a; margin-top: 8px; font-size: .9rem; font-family: var(--font-serif); font-style: italic; }
+  .hero .sub strong { color: #fff; font-style: normal; }
+  .wrap { max-width: 860px; margin: 24px auto 0; padding: 0 16px; }
+  .section-title {
+    font-family: var(--font-title); letter-spacing: 2px; text-transform: uppercase;
+    font-size: 1rem; margin: 26px 0 10px; padding-left: 4px; display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .n { background: var(--accent); color: #fff; padding: 2px 10px; font-size: .85rem; }
+  .section-title.free .n { background: var(--green); }
+  .pcard {
+    background: var(--card); border: 2px solid var(--border);
+    border-radius: 0; padding: 12px 16px; margin-bottom: 8px;
+    box-shadow: 3px 3px 0 rgba(44,24,16,.06);
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    transition: border-color .2s;
+  }
+  .pcard:hover { border-color: var(--gold); }
+  .pcard .name { font-weight: 700; font-size: .95rem; }
+  .pcard .where { color: var(--muted); font-size: .8rem; margin-top: 3px; line-height: 1.5; }
+  .pcard .price {
+    flex-shrink: 0; font-family: var(--font-title); letter-spacing: 1px;
+    font-size: .8rem; text-transform: uppercase; padding: 6px 10px;
+    border: 2px solid; white-space: nowrap;
+  }
+  .pcard.free .price { color: var(--green); border-color: rgba(61,122,61,.4); background: rgba(61,122,61,.06); }
+  .pcard.paid .price { color: var(--accent); border-color: rgba(139,26,26,.35); background: rgba(139,26,26,.05); }
+  .apps-card {
+    background: var(--card); border: 2px dashed var(--gold);
+    border-radius: 0; padding: 14px 16px; margin: 10px 0 30px;
+    box-shadow: 3px 3px 0 rgba(44,24,16,.06);
+  }
+  .apps-card h3 { font-family: var(--font-title); letter-spacing: 2px; text-transform: uppercase; font-size: .85rem; color: var(--navy); margin-bottom: 8px; }
+  .apps-card ul { list-style: none; }
+  .apps-card li { font-size: .88rem; line-height: 1.9; padding-left: 22px; position: relative; }
+  .apps-card li::before { content: '📱'; position: absolute; left: 0; top: 1px; font-size: .8rem; }
+  .apps-card li b { color: var(--text); }
+  .tip { color: var(--muted); font-size: .8rem; font-family: var(--font-serif); font-style: italic; text-align: center; margin-top: 20px; }
+  @media (max-width: 600px) {
+    .pcard { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .pcard .price { align-self: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-btn">← Retour</a>
+
+<div class="hero">
+  <div class="badge">🅿️ ROUTE 66 · WESTERN US</div>
+  <h1>Guide Parking SF</h1>
+  <p class="sub"><strong>San Francisco + Silicon Valley</strong> · 12-14 août · où se garer, combien ça coûte</p>
+</div>
+
+<div class="wrap">
+
+  <div class="section-title free"><span class="n">✅</span> Gratuits</div>
+
+  <div class="pcard free">
+    <div><div class="name">Crissy Field / Golden Gate</div><div class="where">Lot Warming Hut (~50 pl.) · backup Marina Blvd</div></div>
+    <div class="price">Gratuit</div>
+  </div>
+  <div class="pcard free">
+    <div><div class="name">Palace of Fine Arts</div><div class="where">Rue Lyon St / Baker St · backup : petit lot payant ~$10</div></div>
+    <div class="price">Gratuit</div>
+  </div>
+  <div class="pcard free">
+    <div><div class="name">Sea Cliff / Baker Beach</div><div class="where">2 lots (Main + North, nord près du pont)</div></div>
+    <div class="price">Gratuit</div>
+  </div>
+  <div class="pcard free">
+    <div><div class="name">Painted Ladies (Alamo Square)</div><div class="where">Hayes St / Steiner St / Fulton St — limite 2h</div></div>
+    <div class="price">Gratuit</div>
+  </div>
+  <div class="pcard free">
+    <div><div class="name">Twin Peaks</div><div class="where">Lot Christmas Tree Point au sommet (~20 pl.) · backup Portola Dr</div></div>
+    <div class="price">Gratuit</div>
+  </div>
+  <div class="pcard free">
+    <div><div class="name">Atherton — Holbrook-Palmer Park</div><div class="where">Lot du parc (entrée Watkins Ave)</div></div>
+    <div class="price">Gratuit</div>
+  </div>
+  <div class="pcard free">
+    <div><div class="name">Old Palo Alto / Professorville</div><div class="where">Rues résidentielles</div></div>
+    <div class="price">Gratuit</div>
+  </div>
+  <div class="pcard free">
+    <div><div class="name">Los Altos — Lincoln Park</div><div class="where">Lot du parc · mètres Main St ~$1/h</div></div>
+    <div class="price">Gratuit</div>
+  </div>
+
+  <div class="section-title"><span class="n">💲</span> Payants</div>
+
+  <div class="pcard paid">
+    <div><div class="name">Valet Pickwick Hotel (nuits 12-14/08)</div><div class="where">Backup : garage 5th &amp; Mission (833 Mission St) ~$30-40/jour</div></div>
+    <div class="price">~$40-55 /nuit</div>
+  </div>
+  <div class="pcard paid">
+    <div><div class="name">Fisherman's Wharf</div><div class="where">Garage North Point (Beach St) ou Anchorage Square (Leavenworth) · SpotHero à l'avance ~$15-20</div></div>
+    <div class="price">~$10-12 /h</div>
+  </div>
+  <div class="pcard paid">
+    <div><div class="name">Union Square</div><div class="where">Garage Stockton (333 Post St) ou Macy's · SpotHero ~$15</div></div>
+    <div class="price">~$8-12 /h</div>
+  </div>
+  <div class="pcard paid">
+    <div><div class="name">Lombard Street</div><div class="where">⚠️ AUCUN parking sur les virages — mètres Hyde St (haut) / Leavenworth (bas)</div></div>
+    <div class="price">~$2-3 /h</div>
+  </div>
+  <div class="pcard paid">
+    <div><div class="name">Stanford</div><div class="where">Visitor Center parking (Campus Dr) ou garage Roble Field · appli ParkMobile</div></div>
+    <div class="price">~$2-3 /h</div>
+  </div>
+  <div class="pcard paid">
+    <div><div class="name">Palo Alto — University Ave</div><div class="where">Mètres · garage Bryant St / Sherman St (1re heure gratuite)</div></div>
+    <div class="price">~$1,50 /h</div>
+  </div>
+  <div class="pcard paid">
+    <div><div class="name">Los Altos — Main St</div><div class="where">Mètres de rue</div></div>
+    <div class="price">~$1 /h</div>
+  </div>
+
+  <div class="apps-card">
+    <h3>📱 Checklist apps (à installer avant SF)</h3>
+    <ul>
+      <li><b>SpotHero</b> — réserver Wharf + Union Square à l'avance ≈ -50%</li>
+      <li><b>ParkMobile</b> — Stanford + mètres de rue</li>
+      <li><b>MuniMobile</b> — cable car + streetcar F-Market</li>
+    </ul>
+  </div>
+
+  <p class="tip">Chaque spot a un backup — plus jamais de tour en rond à chercher une place 🚗</p>
+
+</div>
+
+</body>
+</html>
