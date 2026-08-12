@@ -680,6 +680,7 @@ const DATA = [
     hotel:"La Quinta Inn Sky Harbor", km:10, drive:"—", alert:"✈️ UA986 CDG 11h15→ORD 13h15 • UA2053 ORD 16h05→PHX 17h55",
     highlights:["UA986 CDG→ORD 11h15-13h15","UA2053 ORD→PHX 16h05-17h55","🍔 In-N-Out Tempe","🛒 Walmart Supercenter Southern Ave"],
     activities:[
+      {time:"🚌", text:"Transport : ✈️ vols UA986 CDG→ORD + UA2053 ORD→PHX · 🚗 2 voitures de location récupérées à PHX (Enterprise)"},
       {time:"8h", text:"Départ maison → Aéroport CDG"},
       {time:"9h30", text:"✈️ Enregistrement United — Terminal 2E, Paris CDG"},
       {time:"11h15", text:"🛫 UA986 — CDG → ORD (Chicago) — 9h de vol"},
@@ -697,6 +698,7 @@ const DATA = [
     hotel:"Grand Canyon Hotel & Suites", km:365, drive:"3h30-4h", alert:"Passage par Seligman (Route 66 — spot Cars 🚗)",
     highlights:["Route 3h30 via Seligman","Mather Point première vue","Sunset Hopi Point 🌅"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 2 voitures — 365 km (Phoenix → Grand Canyon via Seligman) · 🚌 shuttle du parc pour les points de vue"},
       {time:"7h30", text:"Départ Phoenix"},
       {time:"9h", text:"Pause petit-déj à Seligman (Route 66 — spot Radiator Springs de Cars 🚗)"},
       {time:"11h", text:"🚐 Entrée Grand Canyon — America the Beautiful Pass ✅"},
@@ -712,6 +714,7 @@ const DATA = [
     hotel:"Grand Canyon Hotel & Suites", km:30, drive:"—", alert:null,
     highlights:["Rim Trail à pied","Junior Ranger 🦅 pour enfants","Desert View Watchtower"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 voitures pour Desert View (30 min) · 🚶 à pied : Rim Trail, visitor center — tout est sur le plateau"},
       {time:"6h", text:"🌅 Lever soleil au Mather Point (magique)"},
       {time:"8h", text:"Petit-déjeuner"},
       {time:"9h", text:"🥾 Rim Trail — balade facile, vue plongeante"},
@@ -726,6 +729,7 @@ const DATA = [
     hotel:"Lake Powell Resort (Page, AZ)", km:490, drive:"5h", alert:"Entrée Monument Valley payante séparée (~8$/pers, non couverte par le pass)",
     highlights:["Forrest Gump Point 🎬","Monument Valley 🌄","Valley Drive (27 km)","Arrivée Page"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 490 km (GC → Monument Valley → Page) · Valley Drive en voiture (27 km) ou tour guidé Navajo"},
       {time:"7h", text:"Départ Grand Canyon"},
       {time:"8h", text:"Desert View Tower (dernière vue GC)"},
       {time:"10h", text:"🎬 Forrest Gump Point — US-163, spot du film"},
@@ -741,6 +745,7 @@ const DATA = [
     hotel:"Lake Powell Resort (Page, AZ)", km:60, drive:"<1h15", alert:"Sur place à 11h — Indian Rte 222, Page, AZ 86040 ⚠️",
     highlights:["Lower Antelope Canyon 11h30-12h ✅ 736$","Biidi Arch 🪨","Horseshoe Bend","Baignade Lake Powell 🏊"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 trajets courts autour de Page · 🚶 Horseshoe Bend (1,5 km à pied) · Antelope Canyon : navette du tour incluse"},
       {time:"7h30", text:"Horseshoe Bend (tôt, moins de monde + moins chaud)"},
       {time:"9h", text:"Petit-déjeuner"},
       {time:"11h", text:"📍 Arrivée Lower Antelope Canyon — Indian Rte 222, Page (check-in)"},
@@ -755,6 +760,7 @@ const DATA = [
     hotel:"Rodeway Inn Bryce Canyon (Panguitch)", km:250, drive:"3h", alert:null,
     highlights:["Bryce Amphitheater","Navajo Loop + Queen's Garden Trail 🥾","Sunset Point","Option : détour Hanksville 🧭"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 250 km (Page → Bryce) · 🥾 randos à pied · Inspiration/Bryce Point en voiture"},
       {time:"9h", text:"Départ Page → Bryce Canyon (3h de route)"},
       {time:"10h30", text:"Pause à Kanab (option : route via Hanksville — joli détour)"},
       {time:"12h", text:"🏔️ Arrivée Bryce Canyon — entrée parc"},
@@ -769,6 +775,7 @@ const DATA = [
     hotel:"Rodeway Inn Hurricane (Zion)", km:150, drive:"2h30", alert:"🔴 ARRIVER AVANT 7H30 — parking saturé dès 8h30 !",
     highlights:["Canyon Overlook Trail 🥾","Parking avant 7h30 ⚠️","Riverside Walk","🏊 Quail Creek State Park (si conditions OK)","⚠️ Sand Hollow : éviter (algues + swimmer's itch)"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 150 km · 🚌 SHUTTLE ZION OBLIGATOIRE en été — voitures au parking Visitor Center avant 7h30 ⚠️"},
       {time:"6h30", text:"Départ Bryce"},
       {time:"7h30", text:"🚗 ARRIVÉE ZION — parking Visitor Center ⚠️ (se remplit dès 8h30)"},
       {time:"8h30", text:"🚌 Shuttle Zion (obligatoire en été)"},
@@ -786,6 +793,7 @@ const DATA = [
     highlights:["Valley of Fire 🔥 (entrée EST)","Fire Wave Trail + Elephant Rock","Seven Magic Mountains 🗿","Bellagio Fountains 🌊"],
     class:"vegas",
     activities:[
+      {time:"🚌", text:"Transport : 🚗 250 km (Hurricane → Valley of Fire → Vegas) · 🚶 Strip à pied · 🚝 monorail pour le retour"},
       {time:"8h", text:"Départ Hurricane"},
       {time:"9h", text:"🔥 Valley of Fire — Fire Wave Trail + Elephant Rock (entrée EST via RD 169/167 ⚠️)"},
       {time:"10h30", text:"Route vers Las Vegas (1h)"},
@@ -804,6 +812,7 @@ const DATA = [
     highlights:["💒 Cérémonie Sunset Park 19h","📸 Welcome Sign + Bellagio Fountains","🎉 Dîner célébration 21h"],
     class:"wedding",
     activities:[
+      {time:"🚌", text:"Transport : 🚗 voitures : STRAT → Sunset Park → Welcome Sign → Bellagio · 🚶 Strip à pied"},
       {time:"Matin", text:"💪 STRAT gym / grasse mat'" },
       {time:"11h", text:"Brunch en famille"},
       {time:"12h", text:"Shark Reef Aquarium 🦈 (enfants adorent)"},
@@ -826,6 +835,7 @@ const DATA = [
     highlights:["Zabriskie Point","Furnace Creek","Plan B possible","⚠️ Kern River : PAS de baignade (courants)"],
     class:"danger",
     activities:[
+      {time:"🚌", text:"Transport : 🚗 560 km — départ 6h30 (chaleur) · stops en voiture + petites marches (Zabriskie, Badwater)"},
       {time:"6h30", text:"🚗 DÉPART VEGAS — éviter la chaleur"},
       {time:"8h30", text:"☀️ Zabriskie Point (vue iconique)"},
       {time:"9h", text:"Furnace Creek Visitor Center (eau + carte)"},
@@ -840,6 +850,7 @@ const DATA = [
     hotel:"3 Wild Turkeys (Groveland)", km:410, drive:"5h30-6h30", alert:"Départ 7h — Mariposa Grove (séquoias) puis train 13h 🚂",
     highlights:["Mariposa Grove — séquoias géants 🌲","Sugar Pine Railroad 13h ✅","Tunnel View 🏔️","🏊 Pine Mountain Lake ⭐ MEILLEUR SPOT"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 410 km (Bakersfield → Yosemite via Mariposa) · 🚂 Sugar Pine Railroad · 🚶 Mariposa Grove à pied"},
       {time:"7h", text:"🚗 Départ Bakersfield (tôt)"},
       {time:"10h", text:"🌲 Mariposa Grove — séquoias géants (Grizzly Giant + California Tunnel Tree)"},
       {time:"11h30", text:"Pause déjeuner en route"},
@@ -856,6 +867,7 @@ const DATA = [
     hotel:"3 Wild Turkeys (Groveland)", km:50, drive:"45 min", alert:"🔴 Arriver dans la vallée AVANT 7H — parkings saturés",
     highlights:["Mist Trail → Vernal Falls 🥾","Mirror Lake","Cook's Meadow","🏊 Merced River (zones calmes uniquement)"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 45 min (Groveland → vallée) · 🚌 navette GRATUITE de la vallée (7h-22h, toutes les 10-15 min) · 🚶 randos — une fois garés, on ne bouge plus les voitures ⚠️"},
       {time:"6h15", text:"Départ Groveland → Yosemite Valley (45 min)"},
       {time:"7h", text:"🌅 Arrivée vallée — Tunnel View (lumière parfaite)"},
       {time:"7h30", text:"Visitor Center + cartes (aucun réseau ⚠️ offline)"},
@@ -905,6 +917,7 @@ const DATA = [
     hotel:"The Pickwick Hotel", km:130, drive:"2h30-3h", alert:"🚗 Sortir avant 8h30 — retour avant le trafic de 17h. 🍏 Apple/Google : bonus uniquement",
     highlights:["🏡 Atherton — quartiers résidentiels + Holbrook-Palmer Park","🎓 Stanford ⭐⭐⭐⭐⭐ — Main Quad, Memorial Church, Hoover Tower","🌳 Palo Alto ⭐⭐⭐⭐⭐ — University Ave + Old Palo Alto / Professorville","🏡 Los Altos ⭐⭐⭐⭐⭐ — Main/State St + quartiers résidentiels"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 2 voitures toute la journée — 130 km AR Silicon Valley · 🚶 campus Stanford + University Ave (Palo Alto) à pied"},
       {time:"8h30", text:"🚗 Départ SF → US-101 sud (~50 min)"},
       {time:"💡", text:"Tip visite : rester sur rues publiques + trottoirs, PAS de photos des maisons privées, pas de stationnement devant les driveways — quartiers habités, on respecte le calme"},
       {time:"9h30", text:"🏡 Atherton — quartiers résidentiels (villas, jardins) + 🅿️ Holbrook-Palmer Park (avenue, parking public) = la seule vraie sortie de voiture du coin, le reste se fait en voiture"},
@@ -921,6 +934,7 @@ const DATA = [
     hotel:"Quality Inn near Hearst Castle", km:350, drive:"6h-7h (avec arrêts)", alert:"⚠️ Big Sur / Hwy 1 : CONFIRMER 24h avant (incendie / fermeture). Plan B : Carmel → Salinas → US-101 → Paso Robles → San Simeon — aucun risque inutile.",
     highlights:["🌊 Carmel-by-the-Sea ⭐⭐⭐⭐⭐ — étape majeure","Ocean Ave, petites rues & cottages","🏖️ Carmel Beach + déjeuner tôt","🌉 Bixby Bridge","🦭 Elephant Seals","Monterey (option)"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 Hwy 1 (Carmel → Bixby → San Simeon) — Plan B US-101 via Salinas si fermeture ⚠️ · 🚶 Carmel Beach + viewpoints à pied"},
       {time:"7h", text:"🚗 DÉPART SAN FRANCISCO"},
       {time:"9h", text:"🌊 CARMEL-BY-THE-SEA — étape majeure : Ocean Ave, petites rues, cottages"},
       {time:"10h45", text:"🏖️ Carmel Beach — balade"},
@@ -937,6 +951,7 @@ const DATA = [
     hotel:"Hollywood Homes (622 N Manhattan Pl, LA)", km:360, drive:"4h30-5h", alert:"Départ tôt — arrivée LA avant 15h (trafic). Elephant Seals / Hearst : seulement si pas faits la veille",
     highlights:["🦭 Elephant Seals (si pas vus la veille)","🏰 Hearst Castle (option)","Installation LA","Courses + lessive 🧺"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 360 km (San Simeon → LA via Santa Barbara)"},
       {time:"8h", text:"🦭 Elephant Seal Vista Point (uniquement si pas fait la veille)"},
       {time:"8h45", text:"🚗 Route vers Los Angeles (4h30-5h)"},
       {time:"12h", text:"Pause déjeuner à Santa Barbara"},
@@ -960,6 +975,7 @@ const DATA = [
       {time:"19h", text:"🍝 Dîner en famille avec Ronald"},
     ]},
     activities:[
+      {time:"🚌", text:"Transport : Ronald → UCLA en voiture (30-45 min) · 👨‍👩‍👧‍👧 famille : voitures vers Griffith Observatory + Hollywood"},
       {time:"7h", text:"Breakfast at home"},
       {time:"8h15", text:"Arrivée UCLA Anderson — Room A201, Collins Center"},
       {time:"8h30", text:"🎓 Welcome + IP Management — Prof. Abe (brevets, licences)"},
@@ -987,6 +1003,7 @@ const DATA = [
       {time:"19h30", text:"🍝 Dîner en famille (sans Ronald — networking soir)"},
     ]},
     activities:[
+      {time:"🚌", text:"Transport : Ronald → UCLA en voiture · 👨‍👩‍👧‍👧 famille : voitures vers Santa Monica/Venice · 🚌 bus UCLA pour Warner Bros"},
       {time:"7h", text:"Breakfast"},
       {time:"8h45", text:"Arrivée UCLA Anderson"},
       {time:"9h", text:"🎓 Innovative Thinking — Prof. Firstenberg"},
@@ -1011,6 +1028,7 @@ const DATA = [
       {time:"18h30", text:"🍕 Dîner en famille"},
     ]},
     activities:[
+      {time:"🚌", text:"Transport : Ronald → UCLA en voiture · 👨‍👩‍👧‍👧 famille : voitures vers Universal Studios · 🚌 bus UCLA pour DTLA + 🚶 walking tour"},
       {time:"7h", text:"Breakfast"},
       {time:"8h45", text:"Arrivée UCLA Anderson"},
       {time:"9h", text:"🎓 Regulatory Landscape — Prof. Freixes"},
@@ -1034,6 +1052,7 @@ const DATA = [
       {time:"19h", text:"🍕 Dîner en famille (Ronald dîne Fogo de Chão)"},
     ]},
     activities:[
+      {time:"🚌", text:"Transport : Ronald → UCLA en voiture · 👨‍👩‍👧‍👧 famille : voitures · 🚌 bus UCLA pour Abbott · dîner Beverly Hills en transport de groupe"},
       {time:"7h", text:"Breakfast"},
       {time:"8h15", text:"🚌 Bus départ pour Abbott"},
       {time:"9h", text:"🔬 Site Visit Abbott — MedTech Innovation"},
@@ -1059,6 +1078,7 @@ const DATA = [
       {time:"19h", text:"🍝 Dîner de célébration — UCLA terminé ! 🎓"},
     ]},
     activities:[
+      {time:"🚌", text:"Transport : Ronald → UCLA en voiture · 👨‍👩‍👧‍👧 famille : voitures 1h15 vers Camarillo Premium Outlets"},
       {time:"7h", text:"Breakfast"},
       {time:"8h45", text:"Arrivée UCLA Anderson"},
       {time:"9h", text:"🎬 Hollywood's Golden Age of Disruption — Prof. Frons"},
@@ -1071,6 +1091,7 @@ const DATA = [
     hotel:"Hollywood Homes (LA)", km:400, drive:"5h30 AR", alert:"Départ 7h — 400 km AR · retour LA avant le trafic du soir",
     highlights:["🏡 La Jolla ⭐⭐⭐⭐⭐ — suburbs opulents","🏡 Rancho Santa Fe ⭐⭐⭐⭐⭐ — le plus riche du comté","🏛️ Balboa Park","🥪 Gaslamp Quarter + fish tacos","🏖️ Coronado (option)"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 400 km AR (LA → San Diego) · 🚶 à pied à chaque arrêt (La Jolla, Balboa, Gaslamp, Coronado)"},
       {time:"7h", text:"🚗 Départ Los Angeles → San Diego (~2h)"},
       {time:"💡", text:"Tip visite : rues publiques uniquement, ZÉRO photo des maisons privées, ne pas bloquer les gates/driveways, enfants à portée de main — quartiers très privés"},
       {time:"9h", text:"🏡 LA JOLLA ⭐⭐⭐⭐⭐ — étape majeure : 🅿️ parking public La Jolla Cove / Children's Pool (Coast Blvd) + Ellen Browning Scripps Park — on descend, coast trail public, villas depuis le sentier"},
@@ -1087,6 +1108,7 @@ const DATA = [
     hotel:"Hollywood Homes (LA)", km:50, drive:"1h30-2h", alert:null,
     highlights:["Downtown LA Exploration","Grand Central Market 🌮","Dernière soirée en famille"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 50 km (Hollywood → DTLA) · 🚶 tout se fait à pied dans DTLA (Broad, Grand Central, Angels Flight)"},
       {time:"Matin", text:"🌅 Dernière séance sport / rangement"},
       {time:"10h30", text:"🏛️ The Broad Museum ou MOCA (art contemporain)"},
       {time:"12h", text:"🌮 Déjeuner Grand Central Market"},
@@ -1099,6 +1121,7 @@ const DATA = [
     hotel:"En vol ✈️", km:25, drive:"45-90 min", alert:"✈️ UA1981 LAX 11h30→EWR 19h53 • UA54 EWR 21h35→CDG 10h55+1",
     highlights:["UA1981 LAX→EWR 11h30-19h53","UA54 EWR→CDG 21h35-10h55+1","Arrivée France mar 25/08"],
     activities:[
+      {time:"🚌", text:"Transport : 🚗 25 km (maison → LAX, 45-90 min selon trafic) · ✈️ UA1981 LAX→EWR + UA54 EWR→CDG"},
       {time:"7h", text:"Réveil — petits déj, dernière lessive 🧺"},
       {time:"9h", text:"Check-out Hollywood Homes"},
       {time:"9h30", text:"Route vers LAX (45-90 min selon trafic)"},
