@@ -670,7 +670,7 @@
 
 <div style="max-width:1000px;margin:16px auto 0;padding:12px 20px;text-align:center;border:2px dashed var(--gold);background:var(--card);font-family:var(--font-serif);font-style:italic;color:var(--muted);font-size:.92rem;box-shadow:3px 3px 0 rgba(44,24,16,.06)">
   <span style="font-family:var(--font-title);font-style:normal;letter-spacing:2px;text-transform:uppercase;color:var(--navy);font-size:.72rem;display:block;margin-bottom:4px">📖 L'histoire</span>
-  San Francisco 🌉 → vie familiale aisée de la Silicon Valley → Stanford 🎓 → Carmel chic 🌊 → Pacific Coast → Los Angeles 🎬
+  San Francisco 🌉 → Google 🟢 → Stanford 🎓 → la vie quotidienne dans la Silicon Valley 🏡 → Apple Park 🍎 → Carmel chic 🌊 → Pacific Coast → Los Angeles 🎬
 </div>
 
 <div class="container" id="app"></div>
@@ -927,21 +927,22 @@ const DATA = [
       {time:"Plan B", text:"🈯 Japonais si Benihana annule/déborde : Mensho Tokyo (672 Geary St, ramen — 6 min à pied de l'hôtel) · ou Ippudo (1808 Post St) · ou Udon Mugizo (1581 Webster St)"},
     ]},
   { day:15, date:"14/08", dow:"Ven", emoji:"🏡", title:"California Suburban Dream — Silicon Valley",
-    hotel:"The Pickwick Hotel", km:130, drive:"2h30-3h", alert:"🚗 Sortir avant 8h30 — retour avant le trafic de 17h. 🍏 Apple/Google : bonus uniquement",
-    highlights:["🏡 Atherton — quartiers résidentiels + Holbrook-Palmer Park","🎓 Stanford ⭐⭐⭐⭐⭐ — Main Quad, Memorial Church, Hoover Tower","🌳 Palo Alto ⭐⭐⭐⭐⭐ — University Ave + Old Palo Alto / Professorville","🏡 Los Altos ⭐⭐⭐⭐⭐ — Main/State St + quartiers résidentiels"],
+    hotel:"The Pickwick Hotel", km:160, drive:"3h-3h30", alert:"🚗 Départ 8h impératif · Google + Apple prioritaires · Atherton = bonus · retour SF possiblement dans le trafic",
+    highlights:["🟢 Google Visitor Experience ⭐⭐⭐⭐⭐ — Googleplex, Store, plaza","🍎 Apple Park Visitor Center ⭐⭐⭐⭐⭐ — Store, café, terrasse","🎓 Stanford ⭐⭐⭐⭐⭐ — Main Quad, Memorial Church, Hoover Tower","🌳 Palo Alto ⭐⭐⭐⭐⭐ — University Ave + Old Palo Alto / Professorville","🏡 Los Altos ⭐⭐⭐⭐⭐ — Main/State St + quartiers résidentiels"],
     activities:[
-      {time:"🚌", text:"Transport : 🚗 2 voitures toute la journée — 130 km AR Silicon Valley · 🚶 campus Stanford + University Ave (Palo Alto) à pied"},
-      {time:"8h30", text:"🚗 Départ SF → US-101 sud (~50 min)"},
+      {time:"🚌", text:"Transport : 🚗 2 voitures — ~160 km AR (SF → Google → Stanford → Palo Alto → Los Altos → Apple → SF) · 🚶 campus Stanford + University Ave à pied · retour ~1h30 selon trafic"},
+      {time:"8h", text:"🚗 Départ Pickwick → US-101 sud (~50 min)"},
       {time:"💡", text:"Tip visite : rester sur rues publiques + trottoirs, PAS de photos des maisons privées, pas de stationnement devant les driveways — quartiers habités, on respecte le calme"},
-      {time:"9h30", text:"🚗 Tour en voiture d'Atherton (quartiers résidentiels, villas, jardins) + 🅿️ Holbrook-Palmer Park — avenue, GRATUIT = la seule vraie sortie de voiture du coin"},
-      {time:"10h30", text:"🚗 5 min → 🎓 STANFORD — 🅿️ Visitor parking campus (~$2-3/h, appli ParkMobile), 🚶 Main Quad, Memorial Church, Hoover Tower — campus 100% public"},
-      {time:"12h", text:"🚗 5 min → 🍽️ Déjeuner Palo Alto — University Ave · 🅿️ mètres ~$1,50/h ou garage centre (1re heure gratuite) + 🚶 rambla piétonne"},
-      {time:"13h30", text:"🚗 Tour en voiture Old Palo Alto / Professorville — maisons de caractère (trottoirs étroits, peu de parking)"},
-      {time:"15h", text:"🚗 10 min → 🏡 Los Altos — 🚶 Main/State St (mètres ~$1/h) + 🅿️ Lincoln Park / Redwood Grove (GRATUIT) pour descendre, puis quartiers en voiture"},
-      {time:"16h", text:"🚗 Retour SF (~1h)"},
-      {time:"17h30", text:"🚗 Retour hôtel Pickwick"},
-      {time:"19h", text:"🚗 15 min → Dîner UDUPI PALACE — tamoul / sud-indien végétarien (1007 Valencia St, Mission) 🍛 dosa, idli, thali · ~$12-20 · 🅿️ mètres Valencia gratuits après 18h · Plan B : Chutney (511 Jones St, 5 min à pied)"},
-      {time:"Bonus", text:"🍏 Apple Park / Googleplex — uniquement si temps restant (🚗 15 min de Los Altos)"},
+      {time:"9h", text:"🟢 GOOGLE VISITOR EXPERIENCE — Googleplex (2000 N Shoreline Blvd, Mountain View) : Google Store, plaza, sculptures (androïde géant 🟢) — entrée libre, ~1h"},
+      {time:"10h15", text:"🏡 ATHERTON — OPTION : tour en voiture rapide (15-20 min) uniquement si la journée est à l'heure · si retard, SKIP · 🅿️ Holbrook-Palmer Park (avenue, GRATUIT) — rues privées : on admire depuis la voiture"},
+      {time:"10h45", text:"🚗 10 min → 🎓 STANFORD — 🅿️ Visitor parking campus (~$2-3/h, appli ParkMobile), 🚶 Main Quad, Memorial Church, Hoover Tower — campus 100% public"},
+      {time:"12h40", text:"🚗 5 min → 🍽️ Déjeuner Palo Alto — University Ave · 🅿️ mètres ~$1,50/h ou garage centre (1re heure gratuite) + 🚶 rambla piétonne"},
+      {time:"13h45", text:"🚗 Tour en voiture Old Palo Alto / Professorville — maisons de caractère (trottoirs étroits, peu de parking)"},
+      {time:"14h30", text:"🚗 10 min → 🌳 Los Altos — 🚶 Main/State St (mètres ~$1/h) + 🅿️ Lincoln Park / Redwood Grove (GRATUIT) pour descendre, puis quartiers en voiture"},
+      {time:"15h25", text:"🚗 15 min → 🍎 APPLE PARK VISITOR CENTER — 10600 N Tantau Ave, Cupertino : Apple Store, café, terrasse avec vue sur le campus anneau 🍎 — le final de la journée"},
+      {time:"16h40", text:"🚗 Retour SF (~1h30 selon trafic)"},
+      {time:"18h/18h30", text:"🚗 Retour hôtel Pickwick (selon trafic)"},
+      {time:"19h30/20h", text:"🚗 15 min → Dîner UDUPI PALACE — tamoul / sud-indien végétarien (1007 Valencia St, Mission) 🍛 dosa, idli, thali · ~$12-20 · 🅿️ mètres Valencia gratuits après 18h · Plan B : Chutney (511 Jones St, 5 min à pied)"},
     ]},
   { day:16, date:"15/08", dow:"Sam", emoji:"🌊", title:"Carmel & Pacific Coast — Big Sur",
     hotel:"Quality Inn near Hearst Castle", km:350, drive:"6h-7h (avec arrêts)", alert:"⚠️ Big Sur / Hwy 1 : CONFIRMER 24h avant (incendie / fermeture). Plan B : Carmel → Salinas → US-101 → Paso Robles → San Simeon — aucun risque inutile.",
