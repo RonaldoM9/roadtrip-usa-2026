@@ -673,6 +673,78 @@
   San Francisco 🌉 → Google aujourd'hui 🟢 → Stanford 🎓 → la naissance de HP 🏠 → la naissance d'Apple 🍎 → Apple Park aujourd'hui → Carmel chic 🌊 → Pacific Coast → Los Angeles 🎬
 </div>
 
+<style>
+.jetlag-card { max-width:1000px; margin:20px auto 0; border:2px solid var(--border); background:var(--card); box-shadow:3px 3px 0 rgba(44,24,16,.06); }
+.jetlag-head { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 18px; cursor:pointer; background:var(--navy-dim); border-bottom:2px solid var(--border); user-select:none; }
+.jetlag-head h2 { font-family:var(--font-title); font-size:1.02rem; letter-spacing:2px; text-transform:uppercase; color:var(--navy); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.jetlag-head .jl-badge { font-size:.66rem; font-weight:800; letter-spacing:1.5px; color:#fff; background:var(--accent); padding:3px 8px; border-radius:2px; }
+.jetlag-head .jl-arrow { color:var(--navy); font-size:.85rem; }
+.jetlag-body { display:none; padding:14px 18px 16px; }
+.jetlag-body.open { display:block; }
+.jl-intro { font-family:var(--font-serif); font-style:italic; color:var(--muted); font-size:.85rem; margin-bottom:12px; }
+.jl-day { margin-bottom:14px; }
+.jl-day:last-of-type { margin-bottom:0; }
+.jl-day h3 { font-family:var(--font-title); font-size:.78rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); border-bottom:1px dashed var(--border); padding-bottom:4px; margin-bottom:6px; }
+.jl-row { display:flex; align-items:baseline; gap:8px; padding:3px 0; font-size:.85rem; line-height:1.35; flex-wrap:wrap; }
+.jl-time { font-variant-numeric:tabular-nums; white-space:nowrap; font-weight:700; }
+.jl-us { color:var(--blue); }
+.jl-fr { color:var(--accent); }
+.jl-sep { color:var(--muted); }
+.jl-txt { color:var(--text); flex:1; min-width:200px; }
+.jl-note { margin-top:12px; padding:8px 12px; border:1.5px dashed var(--red); color:var(--red); font-weight:700; font-size:.8rem; text-align:center; letter-spacing:.3px; }
+@media (max-width:640px){ .jetlag-head h2{ font-size:.85rem; } .jl-row{ font-size:.8rem; } }
+</style>
+
+<div class="jetlag-card" id="jetlag">
+  <div class="jetlag-head" onclick="var b=this.parentElement.querySelector('.jetlag-body');b.classList.toggle('open');this.querySelector('.jl-arrow').textContent=b.classList.contains('open')?'▲':'▼'">
+    <h2>✈️ Protocole anti-jet lag <span class="jl-badge">RETOUR</span></h2>
+    <span class="jl-arrow">▲</span>
+  </div>
+  <div class="jetlag-body open">
+    <p class="jl-intro">24 → 27 août · Heures en 🇺🇸 Los Angeles (UTC−7) et 🇫🇷 Paris (UTC+2) · <em>(+1/−1)</em> = lendemain / veille</p>
+
+    <div class="jl-day">
+      <h3>📅 24/08 · Décollage LAX ✈️</h3>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 08:00</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 17:00</span><span class="jl-txt">— ☀️ 30 min de soleil + hydratation</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 09:30</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 18:30</span><span class="jl-txt">— ☕ Dernier café avant le vol</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 11:30</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 20:30</span><span class="jl-txt">— ✈️ Décollage LAX · téléphone à l'heure de Paris</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 12:00</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 21:00</span><span class="jl-txt">— 💊 Mélatonine 0,5–1 mg</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 12:30</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 21:30</span><span class="jl-txt">— 😴 Masque, écrans coupés, dormir</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 16:55</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 01:55 (+1)</span><span class="jl-txt">— 🛬 Escale EWR · lumière faible, aucun café, alcool ou 2e comprimé</span></div>
+    </div>
+
+    <div class="jl-day">
+      <h3>📅 25/08 · Vol EWR→CDG + arrivée France 🇫🇷</h3>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 18:35</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 03:35 (+1)</span><span class="jl-txt">— ✈️ EWR→CDG · dormir naturellement, aucune nouvelle dose</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 23:30</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 08:30</span><span class="jl-txt">— 🌅 Réveil définitif dans l'avion · lumière + eau</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 02:30 (+1)</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 11:30</span><span class="jl-txt">— ☀️ 30–45 min de lumière naturelle</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 05:00 (+1)</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 14:00</span><span class="jl-txt">— 🚫 Arrêt caféine</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 05:15 (+1)</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 14:15</span><span class="jl-txt">— 😴 Sieste 20–25 min max si nécessaire</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 05:45 (+1)</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 14:45</span><span class="jl-txt">— ⏰ Réveil impératif</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 11:45</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 20:45</span><span class="jl-txt">— 💊 Mélatonine 0,5–1 mg · lumière faible</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 12:30</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 21:30</span><span class="jl-txt">— 🌙 Coucher</span></div>
+    </div>
+
+    <div class="jl-day">
+      <h3>📅 26/08 · Adaptation jour 1</h3>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 21:30 (−1)</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 06:30</span><span class="jl-txt">— ☀️ Réveil · lumière forte</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 22:00 (−1)</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 07:00</span><span class="jl-txt">— 🚶 15–30 min dehors + café autorisé</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 02:00 (+1)</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 11:00</span><span class="jl-txt">— ☕ Dernier café</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 04:00 (+1)</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 13:00</span><span class="jl-txt">— 🥗 Déjeuner léger + marche</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 11:45</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 20:45</span><span class="jl-txt">— 💊 Mélatonine 0,5–1 mg</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 13:00</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 22:00</span><span class="jl-txt">— 🌙 Coucher</span></div>
+    </div>
+
+    <div class="jl-day">
+      <h3>📅 27/08 · Adaptation jour 2</h3>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 21:30 (−1)</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 06:30</span><span class="jl-txt">— ☀️ Réveil + soleil</span></div>
+      <div class="jl-row"><span class="jl-time jl-us">🇺🇸 11:45</span><span class="jl-sep">·</span><span class="jl-time jl-fr">🇫🇷 20:45</span><span class="jl-txt">— 💊 Mélatonine seulement si le rythme est encore décalé</span></div>
+    </div>
+
+    <div class="jl-note">⚠️ Ne jamais associer mélatonine, alcool ou somnifère.</div>
+  </div>
+</div>
+
 <div class="container" id="app"></div>
 
 <script>
